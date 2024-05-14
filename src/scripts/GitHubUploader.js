@@ -5,6 +5,10 @@ class GitHubUploader {
 		this.authUrl = "octocat"
 	}
 
+	/**
+	 * Authenticate to GitHub
+	 * @param {string} token - GitHub token
+	 */
 	Authenticate(token) {
 		const url = this.domainUrl + this.authUrl
 	}
