@@ -1,4 +1,8 @@
 class GitHubUploader {
+	constructor(domainUrl = "https://api.github.com/") {
+		this.domainUrl = domainUrl
+	}
+
 	/**
 	 * Upload file to GitHub repository
 	 *
