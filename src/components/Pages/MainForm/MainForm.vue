@@ -16,6 +16,13 @@
 				</option>
 			</select>
 		</div>
+
+		<div class="FormUnit" id="tags">
+			<label>
+				{{ t("MainForm.Tags") }}
+			</label>
+			<input type="text" name="tags" id="tagsValue" class="TagInput" />
+		</div>
 	</div>
 </template>
 
@@ -41,7 +48,8 @@ export default Vue.defineComponent({
                     "NetPage": "Page on Web",
                     "Book": "Book",
                     "Academic": "Academic Resource"
-                }
+                },
+                "Tags": "Tags"
             }
         },
         "ja": {
