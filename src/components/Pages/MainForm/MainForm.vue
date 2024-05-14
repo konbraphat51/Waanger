@@ -3,11 +3,7 @@
 <script>
 export default Vue.defineComponent({
 	name: "App",
-	components: {
-		// LanguageSelection: Vue.defineAsyncComponent(() =>
-		// 	loadModule("src/components/LanguageSelection.vue", options),
-		// ),
-	},
+	components: {},
 	setup() {
 		//set up i18n
 		const {t} = VueI18n.useI18n()
