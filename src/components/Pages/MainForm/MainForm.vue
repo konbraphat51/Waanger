@@ -2,7 +2,7 @@
 
 <script>
 export default Vue.defineComponent({
-	name: "App",
+	name: "MainForm",
 	components: {},
 	setup() {
 		//set up i18n
