@@ -23,6 +23,13 @@
 			</label>
 			<input type="text" name="tags" id="tagsValue" class="TagInput" />
 		</div>
+
+		<div class="FormUnit" id="title">
+			<label>
+				{{ t("MainForm.Title") }}
+			</label>
+			<input type="text" name="title" id="titleValue" />
+		</div>
 	</div>
 </template>
 
@@ -49,7 +56,8 @@ export default Vue.defineComponent({
                     "Book": "Book",
                     "Academic": "Academic Resource"
                 },
-                "Tags": "Tags"
+                "Tags": "Tags",
+                "Title": "Title"
             }
         },
         "ja": {
