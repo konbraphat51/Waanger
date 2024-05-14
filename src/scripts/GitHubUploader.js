@@ -28,7 +28,9 @@ class GitHubUploader {
 		committerName = null,
 		committerEmail = null,
 		authorName = null,
-	) {}
+	) {
+		const url = this.BuildUploadUrl(repositoryOwner, repositoryName, filePath)
+	}
 
 	/**
 	 * API URL of file upload
