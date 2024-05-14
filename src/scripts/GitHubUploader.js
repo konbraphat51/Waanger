@@ -34,7 +34,7 @@ class GitHubUploader {
 		committerEmail = null,
 		authorName = null,
 	) {
-		const url = this.BuildUploadUrl(repositoryOwner, repositoryName, filePath)
+		const url = this.#BuildUploadUrl(repositoryOwner, repositoryName, filePath)
 
 		//base 64 encoding
 		const content = btoa(fileContent)
