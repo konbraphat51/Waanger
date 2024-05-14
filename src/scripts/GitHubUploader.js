@@ -29,4 +29,13 @@ class GitHubUploader {
 		committerEmail = null,
 		authorName = null,
 	) {}
+
+	/**
+	 * API URL of file upload
+	 *
+	 * Dependent to https://docs.github.com/ja/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents
+	 */
+	#BuildUploadUrl(repositoryOwner, repositoryName, filePath) {
+		return `${this.domainUrl}repos/${repositoryOwner}/${repositoryName}/contents/${filePath}`
+	}
 }
