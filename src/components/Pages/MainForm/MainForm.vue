@@ -1,4 +1,6 @@
-<template></template>
+<template>
+	<div id="MainForm"></div>
+</template>
 
 <script>
 export default Vue.defineComponent({
