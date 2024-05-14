@@ -1,6 +1,12 @@
 class GitHubUploader {
 	constructor(domainUrl = "https://api.github.com/") {
 		this.domainUrl = domainUrl
+
+		this.authUrl = "octocat"
+	}
+
+	Authenticate(token) {
+		const url = this.domainUrl + this.authUrl
 	}
 
 	/**
