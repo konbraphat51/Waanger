@@ -21,6 +21,7 @@ class GitHubUploader {
 	 * @param {string} [committerName=null] - Committer name. Null for default
 	 * @param {string} [committerEmail=null] - Committer email. Null for default
 	 * @param {string} [authorName=null] - Author name. Null for default
+	 * @returns {number} HTTP status code
 	 */
 	async Upload(
 		repositoryOwner,
@@ -43,6 +44,47 @@ class GitHubUploader {
 			Accept: "application/vnd.github+json",
 			"X-GitHub-Api-Version": "2022-11-28",
 		}
+
+		//get SHA
+		const sha = await this.#GetSHA(
+			repositoryOwner,
+			repositoryName,
+			filePath,
+			branch,
+		)
+
+		//build body
+		const body = {
+			message: commitMessage,
+			content: content,
+		}
+		if (sha !== null) {
+			body.sha = sha
+		}
+		if (branch !== null) {
+			body.branch = branch
+		}
+		if (committerName !== null) {
+			body.committer = {
+				name: committerName,
+				email: committerEmail,
+			}
+		}
+		if (authorName !== null) {
+			body.author = {
+				name: authorName,
+			}
+		}
+
+		//PUT
+		const response = await fetch(url, {
+			method: "PUT",
+			headers: header,
+			body: JSON.stringify(body),
+		})
+
+		//return status
+		return response.status
 	}
 
 	SetToken(token) {
@@ -57,7 +99,7 @@ class GitHubUploader {
 	 * @param {string} repositoryOwner - Repository owner
 	 * @param {string} repositoryName - Repository name
 	 * @param {string} filePath - File path in the repository
-	 * @param {string} [ref=null] - Branch tag name. Null for default branch
+	 * @param {string} [ref=null] - The name of the commit/branch/tag. Null for default branch
 	 * @returns {string} SHA of the file. Null if file not exists
 	 */
 	async #GetSHA(repositoryOwner, repositoryName, filePath, ref = null) {
