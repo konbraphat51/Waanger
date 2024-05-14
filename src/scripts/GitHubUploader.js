@@ -22,7 +22,7 @@ class GitHubUploader {
 	 * @param {string} [committerEmail=null] - Committer email. Null for default
 	 * @param {string} [authorName=null] - Author name. Null for default
 	 */
-	Upload(
+	async Upload(
 		repositoryOwner,
 		repositoryName,
 		filePath,
