@@ -1,5 +1,9 @@
 class GitHubUploader {
-	constructor(domainUrl = "https://api.github.com/") {
+	constructor(token = null, domainUrl = "https://api.github.com/") {
+		if (token !== null) {
+			this.SetToken(token)
+		}
+
 		this.domainUrl = domainUrl
 	}
 
@@ -30,6 +34,16 @@ class GitHubUploader {
 		authorName = null,
 	) {
 		const url = this.BuildUploadUrl(repositoryOwner, repositoryName, filePath)
+
+		const header = {
+			Authorization: `Bearer ${this.accessToken}`,
+			Accept: "application/vnd.github+json",
+			"X-GitHub-Api-Version": "2022-11-28",
+		}
+	}
+
+	SetToken(token) {
+		this.accessToken = token
 	}
 
 	/**
