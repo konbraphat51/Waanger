@@ -30,6 +30,13 @@
 			</label>
 			<input type="text" name="title" id="titleValue" />
 		</div>
+
+		<div class="FormUnit" id="short">
+			<label>
+				{{ t("MainForm.Short") }}
+			</label>
+			<input type="text" name="short" id="shortValue" />
+		</div>
 	</div>
 </template>
 
@@ -57,7 +64,8 @@ export default Vue.defineComponent({
                     "Academic": "Academic Resource"
                 },
                 "Tags": "Tags",
-                "Title": "Title"
+                "Title": "Title",
+                "Short": "Short Description"
             }
         },
         "ja": {
