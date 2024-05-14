@@ -35,6 +35,9 @@ class GitHubUploader {
 	) {
 		const url = this.BuildUploadUrl(repositoryOwner, repositoryName, filePath)
 
+		//base 64 encoding
+		const content = btoa(fileContent)
+
 		const header = {
 			Authorization: `Bearer ${this.accessToken}`,
 			Accept: "application/vnd.github+json",
@@ -44,6 +47,49 @@ class GitHubUploader {
 
 	SetToken(token) {
 		this.accessToken = token
+	}
+
+	/**
+	 * Get SHA of file
+	 *
+	 * https://docs.github.com/ja/rest/repos/contents?apiVersion=2022-11-28#get-repository-content
+	 *
+	 * @param {string} repositoryOwner - Repository owner
+	 * @param {string} repositoryName - Repository name
+	 * @param {string} filePath - File path in the repository
+	 * @param {string} [ref=null] - Branch tag name. Null for default branch
+	 * @returns {string} SHA of the file. Null if file not exists
+	 */
+	async #GetSHA(repositoryOwner, repositoryName, filePath, ref = null) {
+		const url = this.#BuildGetUrl(repositoryOwner, repositoryName, filePath)
+
+		const header = {
+			Accept: "application/vnd.github+json",
+			Authorization: `Bearer ${this.accessToken}`,
+			"X-GitHub-Api-Version": "2022-11-28",
+		}
+
+		if (ref !== null) {
+			//add query
+			url += `?ref=${ref}`
+		}
+
+		//fetch
+		const response = await fetch(url, {
+			method: "GET",
+			headers: header,
+		})
+
+		if (response.status === 404) {
+			return null
+		} else if (response.status === 200) {
+			const data = await response.json()
+			return data.sha
+		}
+	}
+
+	#BuildGetUrl(repositoryOwner, repositoryName, filePath) {
+		return `${this.domainUrl}repos/${repositoryOwner}/${repositoryName}/contents/${filePath}`
 	}
 
 	/**
