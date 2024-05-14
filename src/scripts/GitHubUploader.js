@@ -1,6 +1,9 @@
 class GitHubUploader {
 	/**
 	 * Upload file to GitHub repository
+	 *
+	 * https://docs.github.com/ja/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents
+	 *
 	 * @param {string} repositoryOwner - Repository owner
 	 * @param {string} repositoryName - Repository name
 	 * @param {string} filePath - File path in the repository
