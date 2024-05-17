@@ -14,6 +14,9 @@
 				<option value="academic">
 					{{ t("MainForm.MediaValue.Academic") }}
 				</option>
+				<option value="repository">
+					{{ t("MainForm.MediaValue.Repository") }}
+				</option>
 			</select>
 		</div>
 
@@ -61,7 +64,8 @@ export default Vue.defineComponent({
                 "MediaValue": {
                     "NetPage": "Page on Web",
                     "Book": "Book",
-                    "Academic": "Academic Resource"
+                    "Academic": "Academic Resource",
+					"Repository": "Repository"
                 },
                 "Tags": "Tags",
                 "Title": "Title",
