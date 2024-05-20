@@ -12,6 +12,14 @@
 			<input type="text" name="title" id="titleValue" />
 		</div>
 
+		<div class="FormUnit" id="link">
+			<label>
+				{{ t("MainForm.Link") }}
+			</label>
+			<br />
+			<input type="text" name="link" id="linkValue" />
+		</div>
+
 		<div class="FormUnit" id="media">
 			<label>
 				{{ t("MainForm.Media") }}
@@ -94,7 +102,8 @@ export default Vue.defineComponent({
                 "Tags": "Tags",
                 "Title": "Title",
                 "Short": "Short Description",
-                "Importance": "Importance"
+                "Importance": "Importance",
+                "Link": "Link"
             }
         },
         "ja": {
