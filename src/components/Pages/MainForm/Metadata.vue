@@ -8,6 +8,7 @@
 			<label>
 				{{ t("MainForm.Media") }}
 			</label>
+			<br />
 			<select name="media" id="mediaValue">
 				<option value="netpage">{{ t("MainForm.MediaValue.NetPage") }}</option>
 				<option value="book">{{ t("MainForm.MediaValue.Book") }}</option>
@@ -24,6 +25,7 @@
 			<label>
 				{{ t("MainForm.Tags") }}
 			</label>
+			<br />
 			<input type="text" name="tags" id="tagsValue" class="TagInput" />
 		</div>
 
@@ -31,12 +33,13 @@
 			<label>
 				{{ t("MainForm.Title") }}
 			</label>
+			<br />
 			<input type="text" name="title" id="titleValue" />
 		</div>
 
 		<div class="FormUnit" id="short">
 			<div class="short" v-for="locale in locales_writing">
-				<label> {{ t("MainForm.Short") }} - {{ locale }} </label>
+				<label> {{ t("MainForm.Short") }} - {{ locale }} </label> <br />
 				<input type="text" name="short" id="shortValue" />
 			</div>
 		</div>
