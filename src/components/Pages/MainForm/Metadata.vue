@@ -43,6 +43,22 @@
 				<input type="text" name="short" id="shortValue" />
 			</div>
 		</div>
+
+		<div class="FormUnit" id="importance">
+			<label>
+				{{ t("MainForm.Importance") }}
+			</label>
+			<br />
+			<input
+				type="number"
+				name="importance"
+				id="importanceValue"
+				min="1"
+				max="5"
+				step="1"
+				value="3"
+			/>
+		</div>
 	</div>
 </template>
 
@@ -77,7 +93,8 @@ export default Vue.defineComponent({
                 },
                 "Tags": "Tags",
                 "Title": "Title",
-                "Short": "Short Description"
+                "Short": "Short Description",
+                "Importance": "Importance"
             }
         },
         "ja": {
