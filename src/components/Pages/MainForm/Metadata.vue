@@ -4,6 +4,14 @@
 			{{ t("MainForm.MetaTitle") }}
 		</h2>
 
+		<div class="FormUnit" id="title">
+			<label>
+				{{ t("MainForm.Title") }}
+			</label>
+			<br />
+			<input type="text" name="title" id="titleValue" />
+		</div>
+
 		<div class="FormUnit" id="media">
 			<label>
 				{{ t("MainForm.Media") }}
@@ -27,14 +35,6 @@
 			</label>
 			<br />
 			<input type="text" name="tags" id="tagsValue" class="TagInput" />
-		</div>
-
-		<div class="FormUnit" id="title">
-			<label>
-				{{ t("MainForm.Title") }}
-			</label>
-			<br />
-			<input type="text" name="title" id="titleValue" />
 		</div>
 
 		<div class="FormUnit" id="short">
