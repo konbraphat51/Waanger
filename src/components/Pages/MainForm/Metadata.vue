@@ -67,6 +67,14 @@
 				value="3"
 			/>
 		</div>
+
+		<div class="FormUnit" id="hasPage">
+			<label>
+				{{ t("MainForm.HasPage") }}
+			</label>
+			<br />
+			<input type="checkbox" name="hasPage" id="hasPageValue" />
+		</div>
 	</div>
 </template>
 
