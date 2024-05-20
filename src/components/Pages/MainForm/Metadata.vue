@@ -35,10 +35,10 @@
 		</div>
 
 		<div class="FormUnit" id="short">
-			<label>
-				{{ t("MainForm.Short") }}
-			</label>
-			<input type="text" name="short" id="shortValue" />
+			<div class="short" v-for="locale in locales_writing">
+				<label> {{ t("MainForm.Short") }} - {{ locale }} </label>
+				<input type="text" name="short" id="shortValue" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -47,6 +47,11 @@
 export default Vue.defineComponent({
 	name: "Metadata",
 	components: {},
+	data() {
+		return {
+			locales_writing: locales_writing,
+		}
+	},
 	setup() {
 		//set up i18n
 		const {t} = VueI18n.useI18n()
