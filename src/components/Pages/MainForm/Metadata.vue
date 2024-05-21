@@ -126,11 +126,7 @@ export default Vue.defineComponent({
 	},
 	methods: {
 		EditHasPage(event) {
-			if (allWritten) {
-				this.$emit("EditHasPage", event.target.checked)
-			} else {
-				return null
-			}
+			this.$emit("EditHasPage", event.target.checked)
 		},
 		ValidateAll() {
 			//title
