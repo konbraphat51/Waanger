@@ -94,6 +94,7 @@
 				name="hasPage"
 				id="hasPageValue"
 				v-model="metadata.hasPage"
+				@click="EditHasPage"
 			/>
 		</div>
 	</div>
@@ -121,6 +122,11 @@ export default Vue.defineComponent({
 		//set up i18n
 		const {t} = VueI18n.useI18n()
 		return {t}
+	},
+	methods: {
+		EditHasPage(event) {
+			this.$emit("EditHasPage", event.target.checked)
+		},
 	},
 })
 </script>

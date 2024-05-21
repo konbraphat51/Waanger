@@ -1,7 +1,7 @@
 <template>
 	<div id="MainForm">
-		<Metadata />
-		<ArticleWriter />
+		<Metadata ref="Metadata" @EditHasPage="(value) => (hasPage = value)" />
+		<ArticleWriter v-if="hasPage" />
 	</div>
 </template>
 
@@ -17,6 +17,11 @@ export default Vue.defineComponent({
 		ArticleWriter: Vue.defineAsyncComponent(() =>
 			loadModule("src/components/Pages/MainForm/ArticleWriter.vue", options),
 		),
+	},
+	data() {
+		return {
+			hasPage: false,
+		}
 	},
 	setup() {
 		//set up i18n
