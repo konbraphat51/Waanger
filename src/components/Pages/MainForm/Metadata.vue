@@ -47,13 +47,7 @@
 				{{ t("MainForm.Tags") }}
 			</label>
 			<br />
-			<input
-				type="text"
-				name="tags"
-				id="tagsValue"
-				class="TagInput"
-				v-model="metadata.tags"
-			/>
+			<TagBox @OnTagsUpdated="(tags) => (metadata.tags = tags)" />
 		</div>
 
 		<div class="FormUnit" id="short">
@@ -101,9 +95,15 @@
 </template>
 
 <script>
+import TagBox from "./TagBox.vue"
+
 export default Vue.defineComponent({
 	name: "Metadata",
-	components: {},
+	components: {
+		TagBox: Vue.defineAsyncComponent(() =>
+			loadModule("src/components/Pages/MainForm/TagBox.vue", options),
+		),
+	},
 	data() {
 		return {
 			locales_writing: locales_writing,
