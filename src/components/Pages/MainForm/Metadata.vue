@@ -84,6 +84,7 @@
 			</label>
 			<br />
 			<input
+				class="checkbox"
 				type="checkbox"
 				name="hasPage"
 				id="hasPageValue"
@@ -247,5 +248,10 @@ export default Vue.defineComponent({
 
 .FormUnit input {
 	width: 95%;
+}
+
+.FormUnit .checkbox {
+	width: 20px;
+	height: 20px;
 }
 </style>
