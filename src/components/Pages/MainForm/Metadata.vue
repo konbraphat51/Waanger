@@ -132,9 +132,7 @@ export default Vue.defineComponent({
 				return null
 			}
 		},
-	},
-	computed: {
-		allWritten() {
+		ValidateAll() {
 			//title
 			if (this.metadata.title === "") {
 				this.$refs.title.classList.add("Error")
@@ -253,5 +251,9 @@ export default Vue.defineComponent({
 .FormUnit .checkbox {
 	width: 20px;
 	height: 20px;
+}
+
+.FormUnit .Error {
+	background-color: #f7b7b7;
 }
 </style>
