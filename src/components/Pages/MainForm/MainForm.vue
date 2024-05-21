@@ -39,7 +39,7 @@ export default Vue.defineComponent({
 				return
 			}
 
-			markDownGenerator.Generate(metadata, content)
+			const markdown = markDownGenerator.Generate(metadata, content)
 		},
 	},
 })
