@@ -23,6 +23,7 @@ class MarkDownGenerator {
 
 		//unix time
 		metadata["CreatedAt"] = new Date().getTime() / 1000.0
+		metadata["UpdatedAt"] = metadata["CreatedAt"]
 
 		//to JSON
 		metadataJson = JSON.stringify(metadata)
