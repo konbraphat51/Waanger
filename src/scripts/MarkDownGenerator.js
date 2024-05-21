@@ -31,7 +31,7 @@ class MarkDownGenerator {
 		metadataString += metadataJson
 
 		//ending
-		metadataString += "\nMETA -->\n"
+		metadataString += "\nMETA -->\n\n"
 
 		return metadataString
 	}
