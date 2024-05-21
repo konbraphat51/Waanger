@@ -1,5 +1,6 @@
 <template>
 	<div id="ArticleWriter">
+		<h2>MarkDown</h2>
 		<textarea id="MarkDownBox" rows="30"></textarea>
 	</div>
 </template>
