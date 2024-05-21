@@ -244,4 +244,8 @@ export default Vue.defineComponent({
 	border-radius: 5%;
 	padding: 10px;
 }
+
+.FormUnit input {
+	width: 95%;
+}
 </style>
