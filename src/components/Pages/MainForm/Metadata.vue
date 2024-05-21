@@ -4,7 +4,7 @@
 			{{ t("MainForm.MetaTitle") }}
 		</h2>
 
-		<div class="FormUnit" id="title">
+		<div class="FormUnit" id="title" ref="title">
 			<label>
 				{{ t("MainForm.Title") }}
 			</label>
@@ -17,7 +17,7 @@
 			/>
 		</div>
 
-		<div class="FormUnit" id="link">
+		<div class="FormUnit" id="link" ref="link">
 			<label>
 				{{ t("MainForm.Link") }}
 			</label>
@@ -25,7 +25,7 @@
 			<input type="text" name="link" id="linkValue" v-model="metadata.link" />
 		</div>
 
-		<div class="FormUnit" id="media">
+		<div class="FormUnit" id="media" ref="media">
 			<label>
 				{{ t("MainForm.Media") }}
 			</label>
@@ -42,7 +42,7 @@
 			</select>
 		</div>
 
-		<div class="FormUnit" id="tags">
+		<div class="FormUnit" id="tags" ref="tags">
 			<label>
 				{{ t("MainForm.Tags") }}
 			</label>
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 
-		<div class="FormUnit" id="importance">
+		<div class="FormUnit" id="importance" ref="importance">
 			<label>
 				{{ t("MainForm.Importance") }}
 			</label>
@@ -78,7 +78,7 @@
 			/>
 		</div>
 
-		<div class="FormUnit" id="hasPage">
+		<div class="FormUnit" id="hasPage" ref="hasPage">
 			<label>
 				{{ t("MainForm.HasPage") }}
 			</label>
@@ -125,7 +125,72 @@ export default Vue.defineComponent({
 	},
 	methods: {
 		EditHasPage(event) {
-			this.$emit("EditHasPage", event.target.checked)
+			if (allWritten) {
+				this.$emit("EditHasPage", event.target.checked)
+			} else {
+				return null
+			}
+		},
+	},
+	computed: {
+		allWritten() {
+			//title
+			if (this.metadata.title === "") {
+				this.$refs.title.classList.add("Error")
+
+				return false
+			} else {
+				this.$refs.title.classList.remove("Error")
+			}
+
+			//link
+			if (this.metadata.link === "") {
+				this.$refs.link.classList.add("Error")
+
+				return false
+			} else {
+				this.$refs.link.classList.remove("Error")
+			}
+
+			//media
+			if (this.metadata.media === "") {
+				this.$refs.media.classList.add("Error")
+
+				return false
+			} else {
+				this.$refs.media.classList.remove("Error")
+			}
+
+			//tags
+			if (this.metadata.tags === "") {
+				this.$refs.tags.classList.add("Error")
+
+				return false
+			} else {
+				this.$refs.tags.classList.remove("Error")
+			}
+
+			//short
+			for (let locale of this.locales_writing) {
+				if (this.metadata.short[locale] === "") {
+					this.$refs.short.classList.add("Error")
+
+					return false
+				} else {
+					this.$refs.short.classList.remove("Error")
+				}
+			}
+
+			//importance
+			if (this.metadata.importance === "") {
+				this.$refs.importance.classList.add("Error")
+
+				return false
+			} else {
+				this.$refs.importance.classList.remove("Error")
+			}
+
+			return true
 		},
 	},
 })
