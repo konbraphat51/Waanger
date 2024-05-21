@@ -144,10 +144,22 @@ export default Vue.defineComponent({
                 "Link": "Link"
             }
         },
-        "ja": {
-            "MainForm": {
-                "MetaTitle": "メタデータ"
-            }
-        }
+		"ja": {
+			"MainForm": {
+			"MetaTitle": "メタデータ",
+			"Media": "メディア",
+			"MediaValue": {
+				"NetPage": "ウェブページ",
+				"Book": "書籍",
+				"Academic": "学術リソース",
+				"Repository": "リポジトリ"
+			},
+			"Tags": "タグ",
+			"Title": "タイトル",
+			"Short": "短い説明",
+			"Importance": "重要度",
+			"Link": "URL"
+			}
+		}
     }
 </i18n>
