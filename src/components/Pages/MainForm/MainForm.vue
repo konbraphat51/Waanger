@@ -1,17 +1,21 @@
 <template>
 	<div id="MainForm">
 		<Metadata />
+		<ArticleWriter />
 	</div>
 </template>
 
 <script>
-import Metadata from "./Metadata.vue"
+import ArticleWriter from "./ArticleWriter.vue"
 
 export default Vue.defineComponent({
 	name: "MainForm",
 	components: {
 		Metadata: Vue.defineAsyncComponent(() =>
 			loadModule("src/components/Pages/MainForm/Metadata.vue", options),
+		),
+		ArticleWriter: Vue.defineAsyncComponent(() =>
+			loadModule("src/components/Pages/MainForm/ArticleWriter.vue", options),
 		),
 	},
 	setup() {
