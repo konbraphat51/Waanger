@@ -9,7 +9,12 @@
 				{{ t("MainForm.Title") }}
 			</label>
 			<br />
-			<input type="text" name="title" id="titleValue" />
+			<input
+				type="text"
+				name="title"
+				id="titleValue"
+				v-model="metadata.title"
+			/>
 		</div>
 
 		<div class="FormUnit" id="link">
@@ -17,7 +22,7 @@
 				{{ t("MainForm.Link") }}
 			</label>
 			<br />
-			<input type="text" name="link" id="linkValue" />
+			<input type="text" name="link" id="linkValue" v-model="metadata.link" />
 		</div>
 
 		<div class="FormUnit" id="media">
@@ -25,7 +30,7 @@
 				{{ t("MainForm.Media") }}
 			</label>
 			<br />
-			<select name="media" id="mediaValue">
+			<select name="media" id="mediaValue" v-model="metadata.media">
 				<option value="netpage">{{ t("MainForm.MediaValue.NetPage") }}</option>
 				<option value="book">{{ t("MainForm.MediaValue.Book") }}</option>
 				<option value="academic">
@@ -42,13 +47,24 @@
 				{{ t("MainForm.Tags") }}
 			</label>
 			<br />
-			<input type="text" name="tags" id="tagsValue" class="TagInput" />
+			<input
+				type="text"
+				name="tags"
+				id="tagsValue"
+				class="TagInput"
+				v-model="metadata.tags"
+			/>
 		</div>
 
 		<div class="FormUnit" id="short">
 			<div class="short" v-for="locale in locales_writing">
 				<label> {{ t("MainForm.Short") }} - {{ locale }} </label> <br />
-				<input type="text" name="short" id="shortValue" />
+				<input
+					type="text"
+					name="short"
+					id="shortValue"
+					v-model="metadata.short[locale]"
+				/>
 			</div>
 		</div>
 
@@ -64,7 +80,7 @@
 				min="1"
 				max="5"
 				step="1"
-				value="3"
+				v-model="metadata.importance"
 			/>
 		</div>
 
@@ -73,7 +89,12 @@
 				{{ t("MainForm.HasPage") }}
 			</label>
 			<br />
-			<input type="checkbox" name="hasPage" id="hasPageValue" />
+			<input
+				type="checkbox"
+				name="hasPage"
+				id="hasPageValue"
+				v-model="metadata.hasPage"
+			/>
 		</div>
 	</div>
 </template>
@@ -85,6 +106,15 @@ export default Vue.defineComponent({
 	data() {
 		return {
 			locales_writing: locales_writing,
+			metadata: {
+				title: "",
+				link: "",
+				media: "",
+				tags: "",
+				short: {},
+				importance: 3,
+				hasPage: false,
+			},
 		}
 	},
 	setup() {
