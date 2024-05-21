@@ -256,7 +256,7 @@ export default Vue.defineComponent({
 	height: 20px;
 }
 
-.FormUnit .Error {
+.FormUnit.Error {
 	background-color: #f7b7b7;
 }
 </style>
