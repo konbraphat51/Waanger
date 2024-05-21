@@ -141,7 +141,8 @@ export default Vue.defineComponent({
                 "Title": "Title",
                 "Short": "Short Description",
                 "Importance": "Importance",
-                "Link": "Link"
+                "Link": "Link",
+				"HasPage": "Has MarkDown Page"
             }
         },
 		"ja": {
@@ -158,7 +159,8 @@ export default Vue.defineComponent({
 			"Title": "タイトル",
 			"Short": "短い説明",
 			"Importance": "重要度",
-			"Link": "URL"
+			"Link": "URL",
+			"HasPage": "マークダウンページをつける"
 			}
 		}
     }
