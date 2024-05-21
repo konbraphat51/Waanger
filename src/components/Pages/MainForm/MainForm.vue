@@ -38,6 +38,8 @@ export default Vue.defineComponent({
 			if (content === null) {
 				return
 			}
+
+			markDownGenerator.Generate(metadata, content)
 		},
 	},
 })
