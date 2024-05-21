@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import ArticleWriter from "./ArticleWriter.vue"
-
 export default Vue.defineComponent({
 	name: "MainForm",
 	components: {
