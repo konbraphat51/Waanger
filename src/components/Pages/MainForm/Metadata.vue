@@ -236,3 +236,12 @@ export default Vue.defineComponent({
 		}
     }
 </i18n>
+
+<style>
+.FormUnit {
+	margin: 10px;
+	background-color: #a3fdbb;
+	border-radius: 5%;
+	padding: 10px;
+}
+</style>
