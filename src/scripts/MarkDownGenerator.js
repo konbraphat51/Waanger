@@ -12,7 +12,7 @@ class MarkDownGenerator {
 		//write content
 		this.markDown += content
 
-		console.log(this.markDown)
+		return this.markDown
 	}
 
 	/**
