@@ -3,7 +3,7 @@ class MarkDownGenerator {
 		this.markDown = ""
 	}
 
-	GenerateMarkDown(metadata, content) {
+	Generate(metadata, content) {
 		this.markDown = ""
 
 		//write metadata
@@ -11,6 +11,8 @@ class MarkDownGenerator {
 
 		//write content
 		this.markDown += content
+
+		console.log(this.markDown)
 	}
 
 	/**
@@ -38,4 +40,4 @@ class MarkDownGenerator {
 	}
 }
 
-const MarkDownGenerator = new MarkDownGenerator()
+const markDownGenerator = new MarkDownGenerator()
