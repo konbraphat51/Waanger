@@ -1,5 +1,7 @@
 <template>
-	<div id="ArticleWriter"></div>
+	<div id="ArticleWriter">
+		<textarea id="MarkDownBox" rows="30"></textarea>
+	</div>
 </template>
 
 <script>
@@ -8,3 +10,10 @@ export default Vue.defineComponent({
 	components: {},
 })
 </script>
+
+<style>
+#MarkDownBox {
+	width: 100%;
+	height: 200%;
+}
+</style>
