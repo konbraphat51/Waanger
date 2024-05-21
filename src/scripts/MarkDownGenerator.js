@@ -3,7 +3,9 @@ class MarkDownGenerator {
 		this.markDown = ""
 	}
 
-	generateMarkDown(metadata, content) {
+	GenerateMarkDown(metadata, content) {
 		this.markDown = ""
 	}
+
+    #
 }
