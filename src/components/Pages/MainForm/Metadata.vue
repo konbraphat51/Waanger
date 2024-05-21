@@ -128,6 +128,13 @@ export default Vue.defineComponent({
 		EditHasPage(event) {
 			this.$emit("EditHasPage", event.target.checked)
 		},
+		Submit() {
+			if (this.ValidateAll()) {
+				return this.metadata
+			} else {
+				return null
+			}
+		},
 		ValidateAll() {
 			//title
 			if (this.metadata.title === "") {

@@ -20,6 +20,11 @@ export default Vue.defineComponent({
 			loadModule("src/components/viewer/Viewer.vue", options),
 		),
 	},
+	methods: {
+		Submit() {
+			return this.markdown
+		},
+	},
 })
 </script>
 
