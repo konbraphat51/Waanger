@@ -5,6 +5,9 @@ class MarkDownGenerator {
 
 	GenerateMarkDown(metadata, content) {
 		this.markDown = ""
+
+		//write metadata
+		this.markDown += this.#WriteMetadata(metadata)
 	}
 
 	/**
