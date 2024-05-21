@@ -1,14 +1,25 @@
 <template>
 	<div id="ArticleWriter">
 		<h2>MarkDown</h2>
-		<textarea id="MarkDownBox" rows="30"></textarea>
+		<textarea id="MarkDownBox" rows="30" v-model="markdown"></textarea>
+
+		<Viewer :markdown="markdown" />
 	</div>
 </template>
 
 <script>
 export default Vue.defineComponent({
 	name: "ArticleWriter",
-	components: {},
+	data() {
+		return {
+			markdown: "",
+		}
+	},
+	components: {
+		Viewer: Vue.defineAsyncComponent(() =>
+			loadModule("src/components/viewer/Viewer.vue", options),
+		),
+	},
 })
 </script>
 
