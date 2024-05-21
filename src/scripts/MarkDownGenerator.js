@@ -8,6 +8,9 @@ class MarkDownGenerator {
 
 		//write metadata
 		this.markDown += this.#WriteMetadata(metadata)
+
+		//write content
+		this.markDown += content
 	}
 
 	/**
