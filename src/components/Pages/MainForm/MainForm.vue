@@ -64,28 +64,11 @@ export default Vue.defineComponent({
 				this.ComputeFilePath(),
 				this.ComputeCommitMessage(metadata.title),
 				markdown,
-				(authorName = "วางer"),
+				//	(authorName = "วางer"),
 			)
 
 			//notice
 			alert("Success")
-		},
-		ComputeFilePath() {
-			let filepath = ARTICLE_DIRECTORY
-
-			//now
-			let now = new Date()
-			//to Unix time
-			now = now.getTime() / 1000.0
-			//to string
-			now = now.toString()
-
-			filepath += now + ".md"
-
-			return filepath
-		},
-		ComputeCommitMessage(title) {
-			return "Create " + title
 		},
 	},
 })

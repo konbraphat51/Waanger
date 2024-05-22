@@ -143,5 +143,3 @@ class GitHubUploader {
 		return `${this.domainUrl}repos/${repositoryOwner}/${repositoryName}/contents/${filePath}`
 	}
 }
-
-const gitHubUploader = new GitHubUploader()
