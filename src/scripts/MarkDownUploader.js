@@ -48,6 +48,8 @@ class MarkDownUpLoader extends GitHubUploader {
 		let now = new Date()
 		//to Unix time
 		now = now.getTime() / 1000.0
+		//to int
+		now = parseInt(now)
 		//to string
 		now = now.toString()
 
