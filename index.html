@@ -79,12 +79,13 @@
 		<script src="./src/scripts/MarkDownGenerator.js"></script>
 		<script src="./src/scripts/cookie.js"></script>
 		<script src="./src/scripts/GitHubUploader.js"></script>
-		<script src="./src/scripts/MarkDownUploader.js">
+		<script src="./src/scripts/MarkDownUploader.js"></script>
+		<script>
 			const markdownUploader = new MarkDownUploader(
 				GITHUB_ACCOUNT,
 				GITHUB_REPOSITORY,
 				ARTICLE_DIRECTORY,
-				authorName="วาง"
+				(authorName = "วาง"),
 			)
 		</script>
 		<script>
