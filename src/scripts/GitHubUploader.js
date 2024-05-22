@@ -34,7 +34,7 @@ class GitHubUploader {
 		committerEmail = null,
 		authorName = null,
 	) {
-		let url = this.#BuildUploadUrl(repositoryOwner, repositoryName, filePath)
+		const url = this.#BuildUploadUrl(repositoryOwner, repositoryName, filePath)
 
 		//base 64 encoding
 		const content = btoa(fileContent)
@@ -103,7 +103,7 @@ class GitHubUploader {
 	 * @returns {string} SHA of the file. Null if file not exists
 	 */
 	async #GetSHA(repositoryOwner, repositoryName, filePath, ref = null) {
-		const url = this.#BuildGetUrl(repositoryOwner, repositoryName, filePath)
+		let url = this.#BuildGetUrl(repositoryOwner, repositoryName, filePath)
 
 		const header = {
 			Accept: "application/vnd.github+json",
