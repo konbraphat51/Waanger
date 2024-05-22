@@ -61,8 +61,8 @@ export default Vue.defineComponent({
 			gitHubUploader.Upload(
 				GITHUB_ACCOUNT,
 				GITHUB_REPOSITORY,
-				ComputeFilePath(),
-				ComputeCommitMessage(metadata.title),
+				this.ComputeFilePath(),
+				this.ComputeCommitMessage(metadata.title),
 				markdown,
 				(authorName = "วางer"),
 			)
