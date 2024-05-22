@@ -1,3 +1,7 @@
+/**
+ * Include MarkDownGenerator.js and GitHubUploader.js
+ * Create Markdown and upload it to GitHub
+ */
 class MarkDownUpLoader extends GitHubUploader {
 	constructor(
 		repositoryOwner,
