@@ -12,6 +12,8 @@ class MarkDownUpLoader extends GitHubUploader {
 		committerEmail = null,
 		authorName = null,
 	) {
+		super()
+
 		this.repositoryOwner = repositoryOwner
 		this.repositoryName = repositoryName
 		this.fileDirectory = fileDirectory
