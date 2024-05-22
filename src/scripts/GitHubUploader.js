@@ -144,4 +144,4 @@ class GitHubUploader {
 	}
 }
 
-const GitHubUploader = new GitHubUploader()
+const gitHubUploader = new GitHubUploader()
