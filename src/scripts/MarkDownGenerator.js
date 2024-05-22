@@ -28,7 +28,7 @@ class MarkDownGenerator {
 		metadata["UpdatedAt"] = metadata["CreatedAt"]
 
 		//to JSON
-		metadataJson = JSON.stringify(metadata)
+		let metadataJson = JSON.stringify(metadata)
 
 		//write in
 		metadataString += metadataJson
