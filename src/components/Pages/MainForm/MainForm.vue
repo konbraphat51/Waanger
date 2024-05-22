@@ -2,7 +2,8 @@
 	<div id="MainForm">
 		<Metadata ref="Metadata" @EditHasPage="(value) => (hasPage = value)" />
 		<ArticleWriter ref="ArticleWriter" v-if="hasPage" />
-		<button @click="Submit">{{ t("MainForm.Submit") }}</button>
+		<button @click="Submit">{{ t("MainForm.Submit") }}</button> <br />
+		<label>token</label> <input type="password" v-model="token" />
 	</div>
 </template>
 
@@ -20,6 +21,7 @@ export default Vue.defineComponent({
 	data() {
 		return {
 			hasPage: false,
+			token: "",
 		}
 	},
 	setup() {
@@ -27,8 +29,22 @@ export default Vue.defineComponent({
 		const {t} = VueI18n.useI18n()
 		return {t}
 	},
+	mounted() {
+		//initialize token
+		this.token = GetCookieValue(COOKIE_GITHUB_TOKEN)
+		if (this.token == undefined) {
+			this.token = ""
+		}
+	},
 	methods: {
 		Submit() {
+			if (this.token == "") {
+				return
+			} else {
+				//save to cookie
+				SetCookie(COOKIE_GITHUB_TOKEN, this.token)
+			}
+
 			const metadata = this.$refs.Metadata.Submit()
 			if (metadata === null) {
 				return
