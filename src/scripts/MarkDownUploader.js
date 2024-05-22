@@ -15,15 +15,20 @@ class MarkDownUpLoader extends GitHubUploader {
 		this.committerName = committerName
 		this.committerEmail = committerEmail
 		this.authorName = authorName
+
+		this.markdownGenerator = new MarkDownGenerator()
 	}
 
-	Upload(markdown) {
+	Upload(metadata, content) {
+		//gerate markdown
+		const markdown = this.markdownGenerator.Generate(metadata, content)
+
 		const filename = this.#ComputeDefaultFileName()
 		super.Upload(
 			this.repositoryOwner,
 			this.repositoryName,
 			this.fileDirectory + filename,
-			this.#ComputeCommitMessage(this.fileDirectory),
+			this.#ComputeCommitMessage(metadata.title),
 			markdown,
 			this.branch,
 			this.committerName,

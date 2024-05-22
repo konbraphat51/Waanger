@@ -39,5 +39,3 @@ class MarkDownGenerator {
 		return metadataString
 	}
 }
-
-const markDownGenerator = new MarkDownGenerator()
