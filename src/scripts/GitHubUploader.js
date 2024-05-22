@@ -73,6 +73,7 @@ class GitHubUploader {
 		if (authorName !== null) {
 			body.author = {
 				name: authorName,
+				email: "waanger@example.com",
 			}
 		}
 
