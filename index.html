@@ -79,6 +79,14 @@
 		<script src="./src/scripts/MarkDownGenerator.js"></script>
 		<script src="./src/scripts/cookie.js"></script>
 		<script src="./src/scripts/GitHubUploader.js"></script>
+		<script src="./src/scripts/MarkDownUploader.js">
+			const markdownUploader = new MarkDownUploader(
+				GITHUB_ACCOUNT,
+				GITHUB_REPOSITORY,
+				ARTICLE_DIRECTORY,
+				authorName="วาง"
+			)
+		</script>
 		<script>
 			app.use(router)
 			app.mount("#app")
