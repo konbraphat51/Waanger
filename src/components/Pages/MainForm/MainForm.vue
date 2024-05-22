@@ -63,6 +63,8 @@ export default Vue.defineComponent({
 				GITHUB_REPOSITORY,
 				ComputeFilePath(),
 				ComputeCommitMessage(metadata.title),
+				markdown,
+				(authorName = "วางer"),
 			)
 		},
 		ComputeFilePath() {
