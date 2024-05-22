@@ -62,6 +62,7 @@ export default Vue.defineComponent({
 				GITHUB_ACCOUNT,
 				GITHUB_REPOSITORY,
 				ComputeFilePath(),
+				ComputeCommitMessage(metadata.title),
 			)
 		},
 		ComputeFilePath() {
@@ -77,6 +78,9 @@ export default Vue.defineComponent({
 			filepath += now + ".md"
 
 			return filepath
+		},
+		ComputeCommitMessage(title) {
+			return "Create " + title
 		},
 	},
 })
