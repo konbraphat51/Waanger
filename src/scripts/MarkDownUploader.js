@@ -51,9 +51,7 @@ class MarkDownUpLoader extends GitHubUploader {
 		//to string
 		now = now.toString()
 
-		filepath += now + ".md"
-
-		return filepath
+		return now + ".md"
 	}
 
 	#ComputeCommitMessage(title) {
