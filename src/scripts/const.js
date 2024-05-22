@@ -1,6 +1,6 @@
 const locales_writing = ["en", "ja"]
 
-const github_accountname = "konbraphat51"
-const github_repositoryname = "ChanwaangReviews"
+const GITHUB_ACCOUNT = "konbraphat51"
+const GITHUB_REPOSITORY = "ChanwaangReviews"
 
 const COOKIE_GITHUB_TOKEN = "GTHUB_TOKEN"
