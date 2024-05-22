@@ -56,6 +56,27 @@ export default Vue.defineComponent({
 			}
 
 			const markdown = markDownGenerator.Generate(metadata, content)
+
+			//send to server
+			gitHubUploader.Upload(
+				GITHUB_ACCOUNT,
+				GITHUB_REPOSITORY,
+				ComputeFilePath(),
+			)
+		},
+		ComputeFilePath() {
+			let filepath = ARTICLE_DIRECTORY
+
+			//now
+			let now = new Date()
+			//to Unix time
+			now = now.getTime() / 1000.0
+			//to string
+			now = now.toString()
+
+			filepath += now + ".md"
+
+			return filepath
 		},
 	},
 })
