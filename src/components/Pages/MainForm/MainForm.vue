@@ -66,6 +66,9 @@ export default Vue.defineComponent({
 				markdown,
 				(authorName = "วางer"),
 			)
+
+			//notice
+			alert("Success")
 		},
 		ComputeFilePath() {
 			let filepath = ARTICLE_DIRECTORY
