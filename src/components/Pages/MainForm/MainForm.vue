@@ -55,17 +55,11 @@ export default Vue.defineComponent({
 				return
 			}
 
-			const markdown = markDownGenerator.Generate(metadata, content)
+			//set token
+			markdownUploader.SetToken(this.token)
 
 			//send to server
-			gitHubUploader.Upload(
-				GITHUB_ACCOUNT,
-				GITHUB_REPOSITORY,
-				this.ComputeFilePath(),
-				this.ComputeCommitMessage(metadata.title),
-				markdown,
-				//	(authorName = "วางer"),
-			)
+			markdownUploader.Upload(metadata, content)
 
 			//notice
 			alert("Success")
