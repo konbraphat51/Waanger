@@ -65,10 +65,13 @@ export default Vue.defineComponent({
 			markdownUploader.SetToken(this.token)
 
 			//send to server
-			markdownUploader.Upload(metadata, content)
-
-			//notice
-			alert("Success")
+			markdownUploader.Upload(metadata, content).then((status) => {
+				if (status === 200) {
+					alert("success")
+				} else {
+					alert("failed: " + status)
+				}
+			})
 		},
 	},
 })
