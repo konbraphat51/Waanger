@@ -66,7 +66,7 @@ export default Vue.defineComponent({
 
 			//send to server
 			markdownUploader.Upload(metadata, content).then((status) => {
-				if (status === 200) {
+				if (status === 200 || status === 201) {
 					alert("success")
 				} else {
 					alert("failed: " + status)
