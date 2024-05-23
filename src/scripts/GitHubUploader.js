@@ -40,7 +40,7 @@ class GitHubUploader {
 		const content = await this.#base64Encode(fileContent)
 
 		const header = {
-			Authorization: `Bearer ${this.accessToken}`,
+			Authorization: `token ${this.accessToken}`,
 			Accept: "application/vnd.github+json",
 			"X-GitHub-Api-Version": "2022-11-28",
 		}
