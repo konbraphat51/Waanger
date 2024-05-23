@@ -37,7 +37,7 @@ class GitHubUploader {
 		const url = this.#BuildUploadUrl(repositoryOwner, repositoryName, filePath)
 
 		//base 64 encoding
-		const content = btoa(fileContent)
+		const content = await this.#base64Encode(fileContent)
 
 		const header = {
 			Authorization: `Bearer ${this.accessToken}`,
@@ -142,5 +142,17 @@ class GitHubUploader {
 	 */
 	#BuildUploadUrl(repositoryOwner, repositoryName, filePath) {
 		return `${this.domainUrl}repos/${repositoryOwner}/${repositoryName}/contents/${filePath}`
+	}
+
+	//https://qiita.com/i15fujimura1s/items/6fa5d16b1e53f04f3b06
+	async #base64Encode(...parts) {
+		return new Promise((resolve) => {
+			const reader = new FileReader()
+			reader.onload = () => {
+				const offset = reader.result.indexOf(",") + 1
+				resolve(reader.result.slice(offset))
+			}
+			reader.readAsDataURL(new Blob(parts))
+		})
 	}
 }
