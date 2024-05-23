@@ -50,9 +50,15 @@ export default Vue.defineComponent({
 				return
 			}
 
-			const content = this.$refs.ArticleWriter.Submit()
-			if (content === null) {
-				return
+			let content = ""
+			//if ArticleWriter is rendered...
+			if (this.$refs.ArticleWriter !== undefined) {
+				//...get content from ArticleWriter
+				content = this.$refs.ArticleWriter.Submit()
+
+				if (content === null) {
+					content = ""
+				}
 			}
 
 			//set token
