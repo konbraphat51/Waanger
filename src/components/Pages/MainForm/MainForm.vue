@@ -52,7 +52,7 @@ export default Vue.defineComponent({
 
 			let content = ""
 			//if ArticleWriter is rendered...
-			if (this.$refs.ArticleWriter !== undefined) {
+			if (this.$refs.ArticleWriter != undefined) {
 				//...get content from ArticleWriter
 				content = this.$refs.ArticleWriter.Submit()
 
