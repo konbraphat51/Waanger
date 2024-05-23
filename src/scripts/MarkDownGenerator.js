@@ -24,8 +24,8 @@ class MarkDownGenerator {
 		let metadataString = "<!-- META\n"
 
 		//unix time
-		metadata["CreatedAt"] = new Date().getTime() / 1000.0
-		metadata["UpdatedAt"] = metadata["CreatedAt"]
+		metadata["createdAt"] = new Date().getTime() / 1000.0
+		metadata["updatedAt"] = metadata["createdAt"]
 
 		//to JSON
 		let metadataJson = JSON.stringify(metadata)
