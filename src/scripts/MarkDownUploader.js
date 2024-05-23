@@ -25,12 +25,12 @@ class MarkDownUpLoader extends GitHubUploader {
 		this.markdownGenerator = new MarkDownGenerator()
 	}
 
-	Upload(metadata, content) {
+	async Upload(metadata, content) {
 		//gerate markdown
 		const markdown = this.markdownGenerator.Generate(metadata, content)
 
 		const filename = this.#ComputeDefaultFileName()
-		super.Upload(
+		return await super.Upload(
 			this.repositoryOwner,
 			this.repositoryName,
 			this.fileDirectory + filename,
