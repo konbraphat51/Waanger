@@ -6,9 +6,9 @@
 		<a
 			href="https://konbraphat51.github.io/Waanger/"
 			target="_blank"
-			class="WaangerLink"
+			class="ChanwaangLink"
 		>
-			Konbraphat51 วางer
+			Konbraphat51 ชั้นวางReviews
 		</a>
 
 		<br />
