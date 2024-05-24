@@ -27,6 +27,11 @@ class MarkDownGenerator {
 		metadata["createdAt"] = new Date().getTime() / 1000.0
 		metadata["updatedAt"] = metadata["createdAt"]
 
+		//lowercase tags
+		if (metadata["tags"]) {
+			metadata["tags"] = metadata["tags"].map((tag) => tag.toLowerCase())
+		}
+
 		//to JSON
 		let metadataJson = JSON.stringify(metadata)
 
