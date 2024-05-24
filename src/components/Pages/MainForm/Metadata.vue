@@ -50,15 +50,10 @@
 			<TagBox @OnTagsUpdated="(tags) => (metadata.tags = tags)" />
 		</div>
 
-		<div class="FormUnit" id="short">
+		<div class="FormUnit" id="short" ref="short">
 			<div class="short" v-for="locale in locales_writing">
 				<label> {{ t("MainForm.Short") }} - {{ locale }} </label> <br />
-				<input
-					type="text"
-					name="short"
-					id="shortValue"
-					v-model="metadata.short[locale]"
-				/>
+				<input type="text" v-model="metadata.short[locale]" />
 			</div>
 		</div>
 

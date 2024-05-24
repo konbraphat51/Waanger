@@ -37,10 +37,10 @@ class GitHubUploader {
 		const url = this.#BuildUploadUrl(repositoryOwner, repositoryName, filePath)
 
 		//base 64 encoding
-		const content = btoa(fileContent)
+		const content = await this.#base64Encode(fileContent)
 
 		const header = {
-			Authorization: `Bearer ${this.accessToken}`,
+			Authorization: `token ${this.accessToken}`,
 			Accept: "application/vnd.github+json",
 			"X-GitHub-Api-Version": "2022-11-28",
 		}
@@ -73,6 +73,7 @@ class GitHubUploader {
 		if (authorName !== null) {
 			body.author = {
 				name: authorName,
+				email: "waanger@example.com",
 			}
 		}
 
@@ -103,7 +104,7 @@ class GitHubUploader {
 	 * @returns {string} SHA of the file. Null if file not exists
 	 */
 	async #GetSHA(repositoryOwner, repositoryName, filePath, ref = null) {
-		const url = this.#BuildGetUrl(repositoryOwner, repositoryName, filePath)
+		let url = this.#BuildGetUrl(repositoryOwner, repositoryName, filePath)
 
 		const header = {
 			Accept: "application/vnd.github+json",
@@ -142,6 +143,16 @@ class GitHubUploader {
 	#BuildUploadUrl(repositoryOwner, repositoryName, filePath) {
 		return `${this.domainUrl}repos/${repositoryOwner}/${repositoryName}/contents/${filePath}`
 	}
-}
 
-const gitHubUploader = new GitHubUploader()
+	//https://qiita.com/i15fujimura1s/items/6fa5d16b1e53f04f3b06
+	async #base64Encode(...parts) {
+		return new Promise((resolve) => {
+			const reader = new FileReader()
+			reader.onload = () => {
+				const offset = reader.result.indexOf(",") + 1
+				resolve(reader.result.slice(offset))
+			}
+			reader.readAsDataURL(new Blob(parts))
+		})
+	}
+}

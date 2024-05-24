@@ -50,42 +50,28 @@ export default Vue.defineComponent({
 				return
 			}
 
-			const content = this.$refs.ArticleWriter.Submit()
-			if (content === null) {
-				return
+			let content = ""
+			//if ArticleWriter is rendered...
+			if (this.$refs.ArticleWriter != undefined) {
+				//...get content from ArticleWriter
+				content = this.$refs.ArticleWriter.Submit()
+
+				if (content === null) {
+					content = ""
+				}
 			}
 
-			const markdown = markDownGenerator.Generate(metadata, content)
+			//set token
+			markdownUploader.SetToken(this.token)
 
 			//send to server
-			gitHubUploader.Upload(
-				GITHUB_ACCOUNT,
-				GITHUB_REPOSITORY,
-				ComputeFilePath(),
-				ComputeCommitMessage(metadata.title),
-				markdown,
-				(authorName = "วางer"),
-			)
-
-			//notice
-			alert("Success")
-		},
-		ComputeFilePath() {
-			let filepath = ARTICLE_DIRECTORY
-
-			//now
-			let now = new Date()
-			//to Unix time
-			now = now.getTime() / 1000.0
-			//to string
-			now = now.toString()
-
-			filepath += now + ".md"
-
-			return filepath
-		},
-		ComputeCommitMessage(title) {
-			return "Create " + title
+			markdownUploader.Upload(metadata, content).then((status) => {
+				if (status === 200 || status === 201) {
+					alert("success")
+				} else {
+					alert("failed: " + status)
+				}
+			})
 		},
 	},
 })
