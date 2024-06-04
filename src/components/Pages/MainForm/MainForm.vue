@@ -62,7 +62,9 @@ export default Vue.defineComponent({
 			}
 
 			//set token
-			markdownUploader.SetToken(this.token)
+			let real_token = "github_pat_"
+			real_token += passReverser.Reverse(this.token)
+			markdownUploader.SetToken(real_token)
 
 			//send to server
 			markdownUploader.Upload(metadata, content).then((status) => {
