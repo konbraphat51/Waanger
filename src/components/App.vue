@@ -4,7 +4,7 @@
 		<router-view />
 
 		<a
-			href="https://konbraphat51.github.io/Waanger/"
+			href="https://konbraphat51.github.io/ChanwaangReviews"
 			target="_blank"
 			class="ChanwaangLink"
 		>
@@ -18,7 +18,7 @@
 			target="_blank"
 			class="GithubLink"
 		>
-			GitHub Repository
+			ชั้นวางReviews GitHub Repository
 		</a>
 	</div>
 </template>
