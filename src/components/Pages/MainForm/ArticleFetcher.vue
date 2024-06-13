@@ -21,8 +21,8 @@ export default Vue.defineComponent({
         return {t}
     },
     methods: {
-        FetchArticle() {
-            let content = fetch(
+        async FetchArticle() {
+            let content = await fetch(
                 `https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/contents/${ARTICLE_DIRECTORY}${this.id}.md`,          
             ).then((response) => {
                 if (response.ok) {
