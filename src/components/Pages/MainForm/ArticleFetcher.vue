@@ -38,6 +38,12 @@ export default Vue.defineComponent({
 				.catch((error) => {
 					console.error(error)
 				})
+
+			let metadata = this.GetMetadata(content)
+			let markdown = this.GetMarkdown(content)
+
+			//emit metadata and markdown
+			this.$emit("OnArticleFetched", metadata, markdown)
 		},
 
 		async DecodeBase64(content) {
@@ -52,6 +58,21 @@ export default Vue.defineComponent({
 				.catch((error) => {
 					console.error(error)
 				})
+		},
+
+		GetMetadata(content) {
+			//between METADATA_START and METADATA_END
+			let start = content.indexOf(METADATA_START) + METADATA_START.length
+			let end = content.indexOf(METADATA_END)
+			let metadata_raw = content.substring(start, end)
+
+			return JSON.parse(metadata_raw)
+		},
+
+		GetMarkdown(content) {
+			//after METADATA_END
+			let start = content.indexOf(METADATA_END) + METADATA_END.length
+			return content.substring(start)
 		},
 	},
 })
