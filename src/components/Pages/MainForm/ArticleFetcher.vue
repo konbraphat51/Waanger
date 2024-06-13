@@ -1,42 +1,59 @@
 <template>
 	<div id="ArticleFetcher">
 		<label>{{ t("ArticleFetcher.Label") }}</label>
-        <input type="text" v-model="id" />
+		<input type="text" v-model="id" />
 
-        <button @click="FetchArticle">{{ t("ArticleFetcher.Fetch") }}</button>
+		<button @click="FetchArticle">{{ t("ArticleFetcher.Fetch") }}</button>
 	</div>
 </template>
 
 <script>
 export default Vue.defineComponent({
-    name: "ArticleFetcher",
-    data() {
-        return {
-            id: "",
-        }
-    },
-    setup() {
-        //set up i18n
-        const {t} = VueI18n.useI18n()
-        return {t}
-    },
-    methods: {
-        async FetchArticle() {
-            let content = await fetch(
-                `https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/contents/${ARTICLE_DIRECTORY}${this.id}.md`,          
-            ).then((response) => {
-                if (response.ok) {
-                    return response.json()
-                } else {
-                    throw new Error("Failed to fetch article")
-                }
-            }).then((data) => {
-                return atob(data.content)
-            }).catch((error) => {
-                console.error(error)
-            })
-        },
-    },
+	name: "ArticleFetcher",
+	data() {
+		return {
+			id: "",
+		}
+	},
+	setup() {
+		//set up i18n
+		const {t} = VueI18n.useI18n()
+		return {t}
+	},
+	methods: {
+		async FetchArticle() {
+			let content = await fetch(
+				`https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/contents/${ARTICLE_DIRECTORY}${this.id}.md`,
+			)
+				.then((response) => {
+					if (response.ok) {
+						return response.json()
+					} else {
+						throw new Error("Failed to fetch article")
+					}
+				})
+				.then((data) => {
+					return this.DecodeBase64(data.content)
+				})
+				.catch((error) => {
+					console.error(error)
+				})
+		},
+
+		async DecodeBase64(content) {
+			return fetch(`data:text/plain;charset=utf-8;base64,${content}`)
+				.then((response) => {
+					if (response.ok) {
+						return response.text()
+					} else {
+						throw new Error("Failed to decode base64")
+					}
+				})
+				.catch((error) => {
+					console.error(error)
+				})
+		},
+	},
 })
 </script>
 
@@ -51,3 +68,4 @@ export default Vue.defineComponent({
         "ArticleFetcher.Fetch": "Fetch"
     }
 }   
+</i18n>
