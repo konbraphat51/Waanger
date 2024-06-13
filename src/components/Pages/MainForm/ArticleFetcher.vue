@@ -23,7 +23,7 @@ export default Vue.defineComponent({
     methods: {
         FetchArticle() {
             let content = fetch(
-                `https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/contents/${ARTICLE_DIRECTORY}/${this.id}.md`,          
+                `https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/contents/${ARTICLE_DIRECTORY}${this.id}.md`,          
             ).then((response) => {
                 if (response.ok) {
                     return response.json()
