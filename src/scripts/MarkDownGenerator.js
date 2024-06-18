@@ -21,11 +21,14 @@ class MarkDownGenerator {
 	 * @returns {string}
 	 */
 	#WriteMetadata(metadata) {
-		let metadataString = "<!-- META\n"
+		let metadataString = `${METADATA_START}\n`
 
 		//unix time
-		metadata["createdAt"] = new Date().getTime() / 1000.0
-		metadata["updatedAt"] = metadata["createdAt"]
+		const timeCurrent = new Date().getTime() / 1000.0
+		if (metadata["createdAt"] == undefined) {
+			metadata["createdAt"] = timeCurrent
+		}
+		metadata["updatedAt"] = timeCurrent
 
 		//lowercase tags
 		if (metadata["tags"]) {
@@ -39,7 +42,7 @@ class MarkDownGenerator {
 		metadataString += metadataJson
 
 		//ending
-		metadataString += "\nMETA -->\n\n"
+		metadataString += `\n${METADATA_END}\n\n`
 
 		return metadataString
 	}

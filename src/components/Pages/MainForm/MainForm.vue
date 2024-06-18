@@ -1,5 +1,10 @@
 <template>
 	<div id="MainForm">
+		<ArticleFetcher
+			ref="ArticleFetcher"
+			@OnMetadataFetched="OnMetadataFetched"
+			@OnMarkdownFetched="OnMarkdownFetched"
+		/>
 		<Metadata ref="Metadata" @EditHasPage="(value) => (hasPage = value)" />
 		<ArticleWriter ref="ArticleWriter" v-if="hasPage" />
 		<button @click="Submit">{{ t("MainForm.Submit") }}</button> <br />
@@ -11,6 +16,9 @@
 export default Vue.defineComponent({
 	name: "MainForm",
 	components: {
+		ArticleFetcher: Vue.defineAsyncComponent(() =>
+			loadModule("src/components/Pages/MainForm/ArticleFetcher.vue", options),
+		),
 		Metadata: Vue.defineAsyncComponent(() =>
 			loadModule("src/components/Pages/MainForm/Metadata.vue", options),
 		),
@@ -74,6 +82,12 @@ export default Vue.defineComponent({
 					alert("failed: " + status)
 				}
 			})
+		},
+		OnMetadataFetched(metadata) {
+			this.$refs.Metadata.LoadMetadata(metadata)
+		},
+		OnMarkdownFetched(markdown) {
+			this.$refs.ArticleWriter.LoadMarkdown(markdown)
 		},
 	},
 })
