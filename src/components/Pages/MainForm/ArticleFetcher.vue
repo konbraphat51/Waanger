@@ -40,6 +40,7 @@ export default Vue.defineComponent({
 				})
 
 			let metadata = this.GetMetadata(content)
+			metadata["filename"] = this.id
 			this.$emit("OnMetadataFetched", metadata)
 
 			if (metadata["hasPage"] === true) {

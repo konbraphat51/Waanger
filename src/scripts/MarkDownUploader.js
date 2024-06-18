@@ -29,7 +29,13 @@ class MarkDownUpLoader extends GitHubUploader {
 		//gerate markdown
 		const markdown = this.markdownGenerator.Generate(metadata, content)
 
-		const filename = this.#ComputeDefaultFileName()
+		let filename = ""
+		if (metadata.filename == undefined) {
+			filename = this.#ComputeDefaultFileName()
+		} else {
+			filename = metadata.filename + ".md"
+		}
+
 		return await super.Upload(
 			this.repositoryOwner,
 			this.repositoryName,
