@@ -191,6 +191,8 @@ export default Vue.defineComponent({
 		},
 		LoadMetadata(metadata) {
 			this.metadata = metadata
+
+			this.$emit("EditHasPage", true)
 		},
 	},
 })

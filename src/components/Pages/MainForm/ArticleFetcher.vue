@@ -43,10 +43,12 @@ export default Vue.defineComponent({
 			this.$emit("OnMetadataFetched", metadata)
 
 			if (metadata["hasPage"] === true) {
-				let markdown = this.GetMarkdown(content)
+				setTimeout(() => {
+					let markdown = this.GetMarkdown(content)
 
-				//emit metadata and markdown
-				this.$emit("OnMarkdownFetched", markdown)
+					//emit metadata and markdown
+					this.$emit("OnMarkdownFetched", markdown)
+				}, 300)
 			}
 		},
 
