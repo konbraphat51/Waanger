@@ -78,7 +78,10 @@ export default Vue.defineComponent({
 		GetMarkdown(content) {
 			//after METADATA_END
 			let start = content.indexOf(METADATA_END) + METADATA_END.length
-			return content.substring(start)
+			let withWhiteline = content.substring(start)
+
+			//delete whiteline in the head
+			return withWhiteline.replace(/^\s+/, "")
 		},
 	},
 })
