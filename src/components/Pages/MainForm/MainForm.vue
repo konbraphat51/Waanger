@@ -1,12 +1,11 @@
 <template>
 	<div id="MainForm">
-		<ArticleFetcher ref="ArticleFetcher" />
-		<Metadata
-			ref="Metadata"
-			@EditHasPage="(value) => (hasPage = value)"
+		<ArticleFetcher
+			ref="ArticleFetcher"
 			@OnMetadataFetched="OnMetadataFetched"
 			@OnMarkdownFetched="OnMarkdownFetched"
 		/>
+		<Metadata ref="Metadata" @EditHasPage="(value) => (hasPage = value)" />
 		<ArticleWriter ref="ArticleWriter" v-if="hasPage" />
 		<button @click="Submit">{{ t("MainForm.Submit") }}</button> <br />
 		<label>token</label> <input type="password" v-model="token" />
