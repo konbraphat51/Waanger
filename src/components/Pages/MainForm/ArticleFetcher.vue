@@ -40,10 +40,14 @@ export default Vue.defineComponent({
 				})
 
 			let metadata = this.GetMetadata(content)
-			let markdown = this.GetMarkdown(content)
+			this.$emit("OnMetadataFetched", metadata)
 
-			//emit metadata and markdown
-			this.$emit("OnArticleFetched", metadata, markdown)
+			if (metadata["hasPage"] === true) {
+				let markdown = this.GetMarkdown(content)
+
+				//emit metadata and markdown
+				this.$emit("OnMarkdownFetched", markdown)
+			}
 		},
 
 		async DecodeBase64(content) {
