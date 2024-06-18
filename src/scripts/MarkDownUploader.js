@@ -30,17 +30,20 @@ class MarkDownUpLoader extends GitHubUploader {
 		const markdown = this.markdownGenerator.Generate(metadata, content)
 
 		let filename = ""
+		let updating = false
 		if (metadata.filename == undefined) {
 			filename = this.#ComputeDefaultFileName()
+			updating = false
 		} else {
 			filename = metadata.filename + ".md"
+			updating = true
 		}
 
 		return await super.Upload(
 			this.repositoryOwner,
 			this.repositoryName,
 			this.fileDirectory + filename,
-			this.#ComputeCommitMessage(metadata.title),
+			this.#ComputeCommitMessage(metadata.title, updating),
 			markdown,
 			this.branch,
 			this.committerName,
@@ -62,7 +65,11 @@ class MarkDownUpLoader extends GitHubUploader {
 		return now + ".md"
 	}
 
-	#ComputeCommitMessage(title) {
-		return "Create " + title
+	#ComputeCommitMessage(title, updating) {
+		if (updating) {
+			return "Update " + title
+		} else {
+			return "Create " + title
+		}
 	}
 }
