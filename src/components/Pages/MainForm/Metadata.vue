@@ -189,6 +189,9 @@ export default Vue.defineComponent({
 
 			return true
 		},
+		LoadMetadata(metadata) {
+			this.metadata = metadata
+		},
 	},
 })
 </script>

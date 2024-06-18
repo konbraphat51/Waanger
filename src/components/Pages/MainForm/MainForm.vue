@@ -83,8 +83,12 @@ export default Vue.defineComponent({
 				}
 			})
 		},
-		OnMetadataFetched(metadata) {},
-		OnMarkdownFetched(markdown) {},
+		OnMetadataFetched(metadata) {
+			this.$refs.Metadata.LoadMetadata(metadata)
+		},
+		OnMarkdownFetched(markdown) {
+			this.$refs.ArticleWriter.LoadMarkdown(markdown)
+		},
 	},
 })
 </script>
