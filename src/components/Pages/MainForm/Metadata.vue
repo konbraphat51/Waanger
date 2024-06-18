@@ -47,7 +47,7 @@
 				{{ t("MainForm.Tags") }}
 			</label>
 			<br />
-			<TagBox @OnTagsUpdated="(tags) => (metadata.tags = tags)" />
+			<TagBox @OnTagsUpdated="(tags) => (metadata.tags = tags)" ref="TagBox" />
 		</div>
 
 		<div class="FormUnit" id="short" ref="short">
@@ -191,6 +191,8 @@ export default Vue.defineComponent({
 		},
 		LoadMetadata(metadata) {
 			this.metadata = metadata
+
+			this.$refs.TagBox.LoadTags(metadata.tags)
 
 			this.$emit("EditHasPage", true)
 		},

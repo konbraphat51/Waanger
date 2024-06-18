@@ -10,6 +10,11 @@ export default Vue.defineComponent({
 			tagsRaw: "",
 		}
 	},
+	methods: {
+		LoadTags(tagList) {
+			this.tagsRaw = tagList.join(" ")
+		},
+	},
 	watch: {
 		tagsRaw: function (newVal, oldVal) {
 			this.$emit("OnTagsUpdated", newVal.split(" "))
