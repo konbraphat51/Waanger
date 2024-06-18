@@ -30,6 +30,7 @@ export default Vue.defineComponent({
 		return {
 			hasPage: false,
 			token: "",
+			uploading: false,
 		}
 	},
 	setup() {
@@ -46,6 +47,10 @@ export default Vue.defineComponent({
 	},
 	methods: {
 		Submit() {
+			if (this.uploading) {
+				return
+			}
+
 			if (this.token == "") {
 				return
 			} else {
@@ -75,11 +80,17 @@ export default Vue.defineComponent({
 			markdownUploader.SetToken(real_token)
 
 			//send to server
+			this.uploading = true
 			markdownUploader.Upload(metadata, content).then((status) => {
 				if (status === 200 || status === 201) {
 					alert("success")
+					this.uploading = false
+
+					//reset
+					location.reload()
 				} else {
 					alert("failed: " + status)
+					this.uploading = false
 				}
 			})
 		},
