@@ -21,7 +21,7 @@ class MarkDownGenerator {
 	 * @returns {string}
 	 */
 	#WriteMetadata(metadata) {
-		let metadataString = "<!-- META\n"
+		let metadataString = `${METADATA_START}\n`
 
 		//unix time
 		metadata["createdAt"] = new Date().getTime() / 1000.0
@@ -39,7 +39,7 @@ class MarkDownGenerator {
 		metadataString += metadataJson
 
 		//ending
-		metadataString += "\nMETA -->\n\n"
+		metadataString += `\n${METADATA_END}\n\n`
 
 		return metadataString
 	}
