@@ -84,6 +84,11 @@ export default Vue.defineComponent({
 			//delete whiteline in the head
 			return withWhiteline.replace(/^\s+/, "")
 		},
+
+		Fetch(id) {
+			this.id = id
+			this.FetchArticle()
+		},
 	},
 })
 </script>
