@@ -44,6 +44,16 @@ export default Vue.defineComponent({
 		if (this.token == undefined) {
 			this.token = ""
 		}
+
+		//get the query
+		const afterQuestion = location.href.split("?")[1]
+		const searchParams = new URLSearchParams(afterQuestion)
+		const id = searchParams.get("id")
+		if (id != null) {
+			setTimeout(() => {
+				this.$refs.ArticleFetcher.Fetch(id)
+			}, 300)
+		}
 	},
 	methods: {
 		Submit() {
