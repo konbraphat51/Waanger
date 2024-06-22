@@ -40,10 +40,17 @@ export default Vue.defineComponent({
 				})
 
 			let metadata = this.GetMetadata(content)
-			let markdown = this.GetMarkdown(content)
+			metadata["filename"] = this.id
+			this.$emit("OnMetadataFetched", metadata)
 
-			//emit metadata and markdown
-			this.$emit("OnArticleFetched", metadata, markdown)
+			if (metadata["hasPage"] === true) {
+				setTimeout(() => {
+					let markdown = this.GetMarkdown(content)
+
+					//emit metadata and markdown
+					this.$emit("OnMarkdownFetched", markdown)
+				}, 300)
+			}
 		},
 
 		async DecodeBase64(content) {
@@ -72,7 +79,10 @@ export default Vue.defineComponent({
 		GetMarkdown(content) {
 			//after METADATA_END
 			let start = content.indexOf(METADATA_END) + METADATA_END.length
-			return content.substring(start)
+			let withWhiteline = content.substring(start)
+
+			//delete whiteline in the head
+			return withWhiteline.replace(/^\s+/, "")
 		},
 	},
 })

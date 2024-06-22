@@ -24,6 +24,9 @@ export default Vue.defineComponent({
 		Submit() {
 			return this.markdown
 		},
+		LoadMarkdown(markdown) {
+			this.markdown = markdown
+		},
 	},
 })
 </script>

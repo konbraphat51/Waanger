@@ -24,8 +24,11 @@ class MarkDownGenerator {
 		let metadataString = `${METADATA_START}\n`
 
 		//unix time
-		metadata["createdAt"] = new Date().getTime() / 1000.0
-		metadata["updatedAt"] = metadata["createdAt"]
+		const timeCurrent = new Date().getTime() / 1000.0
+		if (metadata["createdAt"] == undefined) {
+			metadata["createdAt"] = timeCurrent
+		}
+		metadata["updatedAt"] = timeCurrent
 
 		//lowercase tags
 		if (metadata["tags"]) {

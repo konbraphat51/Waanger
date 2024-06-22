@@ -1,6 +1,10 @@
 <template>
 	<div id="MainForm">
-		<ArticleFetcher ref="ArticleFetcher" />
+		<ArticleFetcher
+			ref="ArticleFetcher"
+			@OnMetadataFetched="OnMetadataFetched"
+			@OnMarkdownFetched="OnMarkdownFetched"
+		/>
 		<Metadata ref="Metadata" @EditHasPage="(value) => (hasPage = value)" />
 		<ArticleWriter ref="ArticleWriter" v-if="hasPage" />
 		<button @click="Submit">{{ t("MainForm.Submit") }}</button> <br />
@@ -66,7 +70,9 @@ export default Vue.defineComponent({
 			}
 
 			//set token
-			markdownUploader.SetToken(this.token)
+			let real_token = "github_pat_"
+			real_token += passReverser.Reverse(this.token)
+			markdownUploader.SetToken(real_token)
 
 			//send to server
 			markdownUploader.Upload(metadata, content).then((status) => {
@@ -76,6 +82,12 @@ export default Vue.defineComponent({
 					alert("failed: " + status)
 				}
 			})
+		},
+		OnMetadataFetched(metadata) {
+			this.$refs.Metadata.LoadMetadata(metadata)
+		},
+		OnMarkdownFetched(markdown) {
+			this.$refs.ArticleWriter.LoadMarkdown(markdown)
 		},
 	},
 })
