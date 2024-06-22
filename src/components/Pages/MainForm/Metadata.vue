@@ -39,6 +39,9 @@
 				<option value="repository">
 					{{ t("MainForm.MediaValue.Repository") }}
 				</option>
+				<option value="presentation">
+					{{ t("MainForm.MediaValue.Presentation") }}
+				</option>
 			</select>
 		</div>
 
@@ -210,7 +213,8 @@ export default Vue.defineComponent({
                     "NetPage": "Page on Web",
                     "Book": "Book",
                     "Academic": "Academic Resource",
-					"Repository": "Repository"
+					"Repository": "Repository",
+					"Presentation": "Presentation"
                 },
                 "Tags": "Tags",
                 "Title": "Title",
@@ -228,7 +232,8 @@ export default Vue.defineComponent({
 				"NetPage": "ウェブページ",
 				"Book": "書籍",
 				"Academic": "学術リソース",
-				"Repository": "リポジトリ"
+				"Repository": "リポジトリ",
+				"Presentation": "口頭発表"
 			},
 			"Tags": "タグ",
 			"Title": "タイトル",
