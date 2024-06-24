@@ -42,6 +42,9 @@
 				<option value="presentation">
 					{{ t("MainForm.MediaValue.Presentation") }}
 				</option>
+				<option value="entertainment">
+					{{ t("MainForm.MediaValue.Entertainment") }}
+				</option>
 			</select>
 		</div>
 
@@ -214,7 +217,8 @@ export default Vue.defineComponent({
                     "Book": "Book",
                     "Academic": "Academic Resource",
 					"Repository": "Repository",
-					"Presentation": "Presentation"
+					"Presentation": "Presentation",
+					"Entertainment": "Entertainment"
                 },
                 "Tags": "Tags",
                 "Title": "Title",
@@ -233,7 +237,8 @@ export default Vue.defineComponent({
 				"Book": "書籍",
 				"Academic": "学術リソース",
 				"Repository": "リポジトリ",
-				"Presentation": "口頭発表"
+				"Presentation": "口頭発表",
+				"Entertainment": "エンタメ"
 			},
 			"Tags": "タグ",
 			"Title": "タイトル",
